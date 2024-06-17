@@ -13,9 +13,13 @@ Diploma project from the "Data Engineering" master's degree programme at the Nat
 - **/cpp_code**: исходный код на C++ для замера скорости метода.
   - `main.cpp`
   - `CMakeLists.txt` 
-- **/python_code**: исходный код на Python для рендеринга и денойзинга.
+- **/python_code**: исходный код на Python для денойзинга.
   - `main.py`
   - `requirements.txt`
+  
+  Часть кода, связанная с процессом рендеринга методом Монте-Карло использована [отсюда](https://github.com/HK-SHAO/RayTracingPBR/blob/taichi-dev/examples/cornell_box/cornell_box_shortest.py).
+  Автор [HK-SHAO](https://github.com/HK-SHAO).
+  
 - **/matlab_code**: исходный код matlab для замера скорости метода.
   - `illumination_comparison.m`
   - `README.md`
