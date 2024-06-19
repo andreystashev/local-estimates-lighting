@@ -7,22 +7,23 @@ Diploma project from the "Data Engineering" master's degree programme at the Nat
 В данной работе исследованы математические методы моделирования распределения яркости в трехмерных сценах, с особым акцентом на "локальные оценки метода Монте-Карло". Целью работы является повышение точности и эффективности визуализации синтетических изображений путем устранения зашумленности и ускорения процесса рендеринга.
 
 ## Структура репозитория
-- **/docs**: текст проекта.
-  - `thesis.pdf`
-  - `presentation.pptx`
-- **/cpp_code**: исходный код на C++ для замера скорости метода.
-  - `main.cpp`
-  - `CMakeLists.txt` 
-- **/python_code**: исходный код на Python для денойзинга.
-  - `main.py`
-  - `requirements.txt`
+- **/docs**: 
+  - `lacal-estimates-thesis.pdf` текст проекта.
+  - `lacal-estimates-thesis-eng.pdf` текст проекта на английском.
+  - `presentation.pptx` презентация
+- **/cpp_code**: 
+  - `denoising/main.cpp` программа для очистки зашумленных изображений.
+  - `sobolev_task/main.cpp` исходный код на C++ для замера скорости метода на "задаче Соболева".
+- **/python_code**: 
+  - `denoising/main.py` программа для рендеринга методом Монте-Карло с применением денойзигра к промежуточным изображеням.
+  - `sobolev_task/main.py` исходный код на python для замера скорости метода на "задаче Соболева".
+  - `double-local-estimate/main.py` программа для визуализации метода двойной локальной оценки.
   
   Часть кода, связанная с процессом рендеринга методом Монте-Карло использована [отсюда](https://github.com/HK-SHAO/RayTracingPBR/blob/taichi-dev/examples/cornell_box/cornell_box_shortest.py).
   Автор [HK-SHAO](https://github.com/HK-SHAO).
   
 - **/matlab_code**: исходный код matlab для замера скорости метода.
   - `illumination_comparison.m`
-  - `README.md`
 - **README.md**: информация о проекте.
 
 ## Установка
