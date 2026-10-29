@@ -1,37 +1,31 @@
-# Денойзер сцены
+# Cornell box rendering and denoising
 
-Данная программа выполняет денойзинг изображений сцены, получаемых с помощью трассировки методом Монте-Карло, с использованием библиотеки Intel Open Image Denoise. Программа отображает процесс рендеринга в одном окне и выводит очищенную от шума копию изображения в другом окне.
+A Taichi Monte Carlo rendering experiment with Intel Open Image Denoise (OIDN).
+The renderer opens a Taichi window and, every 100 rendering iterations, saves the
+current image, denoises it, and displays the result through Pygame.
 
-## Установка
+## Setup and run
 
-### Зависимости Python
+Use a separate virtual environment. From the repository root:
 
-1. Установите Python версии 3.9 или выше.
-2. Установите необходимые зависимости:
-   ```sh
-   pip install -r requirements.txt
-   ```
+```sh
+python -m pip install -r pyton_code/denoising/requirements.txt
+python pyton_code/denoising/main.py
+```
 
-## Запуск программы
+This example needs a graphical desktop, a GPU backend supported by Taichi, and
+the native OIDN runtime expected by the `oidn` Python wrapper. The requirements
+file records historical package versions; it does not provision GPU drivers or
+native libraries. Consult the Taichi and OIDN installation instructions for your
+platform if initialization fails.
 
-1. Перейдите в директорию `python_code/denoising`.
-2. Запустите основной скрипт:
-   ```sh
-   python main.py
-   ```
+The program writes `CornellBoxNoised.png` and `CornellBoxDenoised.png` to the
+current working directory, replacing the previous pair at each denoising step.
+`pix_resolution` controls image dimensions; the interval is set in `main()`.
+Close the rendering window to end the loop.
 
-## Описание
+The local-estimate function in the renderer is a research prototype with unused
+sampling parameters. Rendering and image quality require further validation;
+this example is not a production renderer.
 
-Программа реализована на Python и использует следующие библиотеки:
-- `taichi` для рендеринга.
-- `oidn` для денойзинга.
-- `pygame` для отображения очищенного изображения.
-
-
-### Основные возможности
-
-- **Рендеринг**: Использует метод Монте-Карло для создания синтетических изображений.
-- **Денойзинг**: Применяет Intel Open Image Denoise для удаления шума из изображений.
-- **Отображение**: Рендерит сцену в одном окне, периодически сохраняет текущее изображение и выводит очищенную от шума копию в другом окне.
-<img width="1404" alt="Screenshot 2024-06-19 at 1 52 43 PM" src="https://github.com/andreystashev/local-estimates-lighting/assets/70208784/ddf152e3-ffea-4136-be0b-b6f08792b449">
-
+<img width="1404" alt="Cornell box rendering and denoised output" src="https://github.com/andreystashev/local-estimates-lighting/assets/70208784/ddf152e3-ffea-4136-be0b-b6f08792b449">
