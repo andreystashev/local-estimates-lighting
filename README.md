@@ -80,11 +80,18 @@ single interchangeable implementation of the same equation. In particular:
 
 ## Checks
 
-With NumPy installed, run the Python local-estimate regression checks:
+Run the Python local-estimate regression checks from the repository root. They
+need only NumPy, using the same version as the plotting example:
 
 ```sh
+python -m pip install numpy==2.0.0
 python -m unittest discover -s tests -v
+python -m compileall -q pyton_code/sobolev_task/main.py tests
 ```
+
+The [Python checks workflow](.github/workflows/python-checks.yml) runs these
+checks on Python 3.11 for pushes and pull requests. It does not install rendering
+dependencies or validate the C++, MATLAB, GPU, or interactive plotting examples.
 
 ## Attribution
 
