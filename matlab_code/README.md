@@ -1,14 +1,18 @@
-# Описание файла illumination_comparison.m
-Файл содержит MATLAB-скрипт для сравнительного анализа двух методов расчета освещенности на плоскости:
+# MATLAB illumination comparison
 
-Метод локальной оценки:
+`illumination_comparison.m` evaluates a local-estimate expression and a Sobolev
+expression, prints their execution times and timing ratio, and plots both curves.
+The Sobolev expression uses MATLAB's `besselk` and `besselj` functions.
 
-Использует алгоритм оценки освещенности на основе моделирования лучей с учетом коэффициентов отражения источников света.
-Метод Соболева:
+Open the script in MATLAB and run it. MATLAB R2016b or later is needed for local
+functions in scripts. No external MATLAB toolbox is explicitly imported.
 
-Реализует численный метод для расчета распределения освещенности на основе интегралов и специальных функций Бесселя.
-Использование:
-Для проведения сравнительного анализа освещенности на различных расстояниях r, измените вектор r в скрипте и запустите его. Результаты сравнения методов будут выведены в консоль MATLAB.
-#### Примечания:
-Перед использованием убедитесь, что все необходимые функции и библиотеки, такие как функции Бесселя, доступны в вашей среде MATLAB.
-Для детализации методов и параметров см. комментарии в самом скрипте illumination_comparison.m.
+Edit `Phi`, `N`, `T`, `r`, `rho`, `h1`, `h2`, `rho1`, and `rho2` to change the
+experiment. The local kernel contains `1 / r`, so distances must stay positive.
+In this historical script, `T` must not exceed `N` because reflection weights are
+allocated using `N + 1` entries.
+
+The implementations differ from the Python and C++ experiments, including the
+reflection weights and integration range. Review their formulas and numerical
+integration settings before treating the timing ratio as a comparison of
+methods with equivalent accuracy.

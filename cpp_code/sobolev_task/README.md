@@ -1,8 +1,23 @@
-### Описание main.cpp
-Программа позволяет проводить сравнительный анализ двух методов расчета освещенности на плоскости:
+# C++ illumination timing experiment
 
-Метод локальной оценки:
+`main.cpp` evaluates a Sobolev expression using Boost Bessel functions and a
+separate simplified local-estimate expression, then prints their values and
+execution times in microseconds.
 
-Использует алгоритм оценки освещенности на основе моделирования лучей с учетом коэффициентов отражения источников света. Метод Соболева:
+From the repository root:
 
-Реализует численный метод для расчета распределения освещенности на основе интегралов и специальных функций Бесселя. Использование: Для проведения сравнительного анализа освещенности на различных расстояниях r, измените вектор r в скрипте и запустите его.
+```sh
+cmake -S cpp_code/sobolev_task -B build/sobolev_task
+cmake --build build/sobolev_task
+./build/sobolev_task/LocalEstimatesLighting
+```
+
+Requirements: CMake 3.10+, a C++14 compiler, and Boost, including the `system`
+component requested by `CMakeLists.txt`. On multi-configuration generators, the
+executable may be under a configuration directory such as `Debug` or `Release`.
+
+Edit the source parameters to change the plane heights, reflection coefficients,
+distance, ray count, or collision count. The Sobolev loop currently uses a step
+of `0.01` up to `10000`; it can be slow. Its accumulation does not multiply by the
+integration step as the MATLAB version does. Review the quadrature and align the
+formulas and parameters before comparing numerical results or timing claims.
